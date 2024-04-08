@@ -3,23 +3,96 @@ import { Link } from "react-router-dom";
 
 // Bible Passage Interface Component
 function BiblePassageInterface() {
+  const booksOfBible = [
+    "Genesis",
+    "Exodus",
+    "Leviticus",
+    "Numbers",
+    "Deuteronomy",
+    "Joshua",
+    "Judges",
+    "Ruth",
+    "1 Samuel",
+    "2 Samuel",
+    "1 Kings",
+    "2 Kings",
+    "1 Chronicles",
+    "2 Chronicles",
+    "Ezra",
+    "Nehemiah",
+    "Esther",
+    "Job",
+    "Psalms",
+    "Proverbs",
+    "Ecclesiastes",
+    "Song of Solomon",
+    "Isaiah",
+    "Jeremiah",
+    "Lamentations",
+    "Ezekiel",
+    "Daniel",
+    "Hosea",
+    "Joel",
+    "Amos",
+    "Obadiah",
+    "Jonah",
+    "Micah",
+    "Nahum",
+    "Habakkuk",
+    "Zephaniah",
+    "Haggai",
+    "Zechariah",
+    "Malachi",
+    "Matthew",
+    "Mark",
+    "Luke",
+    "John",
+    "Acts",
+    "Romans",
+    "1 Corinthians",
+    "2 Corinthians",
+    "Galatians",
+    "Ephesians",
+    "Philippians",
+    "Colossians",
+    "1 Thessalonians",
+    "2 Thessalonians",
+    "1 Timothy",
+    "2 Timothy",
+    "Titus",
+    "Philemon",
+    "Hebrews",
+    "James",
+    "1 Peter",
+    "2 Peter",
+    "1 John",
+    "2 John",
+    "3 John",
+    "Jude",
+    "Revelation",
+  ];
   return (
     <div className="bible-passage-interface">
+      <h2 className="bible-passage-interface-title">Bible</h2>
       {/* Dropdown for selecting Bible book */}
       <div className="bible-dropdown">
-        <label htmlFor="book-dropdown">Select Book:</label>
+        <label htmlFor="book-dropdown">Book</label>
         <select id="book-dropdown">
-          {/* Options for selecting Bible book */}
-          {/* Example:
-            <option value="Genesis">Genesis</option> */}
+          {booksOfBible.map((book, index) => (
+            <option key={index} value={book}>
+              {book}
+            </option>
+          ))}
         </select>
       </div>
       {/* Input boxes for entering chapter and verse */}
-      <div className="chapter-verse-inputs">
-        <label htmlFor="chapter-input">Chapter:</label>
-        <input type="number" id="chapter-input" />
-        <label htmlFor="verse-input">Verse:</label>
-        <input type="number" id="verse-input" />
+      <div className="chapter-input">
+        <label htmlFor="chapter-input">Chap.</label>
+        <input type="number" id="chapter-input-num" />
+      </div>
+      <div className="verse-input">
+        <label htmlFor="verse-input">Verse</label>
+        <input type="number" id="verse-input-num" />
       </div>
       {/* Button for opening Bible browser */}
       <button className="browse-button">

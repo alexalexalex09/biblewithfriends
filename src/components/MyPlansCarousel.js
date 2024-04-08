@@ -9,6 +9,10 @@ function MyPlansCarousel() {
       {/* Insert your carousel component here */}
       <div className="carousel">
         {/* Carousel squares with icons */}
+        <div className="carousel-square new-plan-square">
+          <span>New Plan</span>
+          <img src="new-plan-icon.png" alt="Plan Icon" />
+        </div>
         {/* Example:
           <div className="carousel-square">
             <img src="plan-icon.png" alt="Plan Icon" />

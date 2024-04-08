@@ -6,16 +6,15 @@ import BiblePassageInterface from "./BiblePassageInterface";
 import MenuBar from "./MenuBar";
 
 // Main App Component
-const HomePage = () => {
+function HomePage() {
   return (
     <div className="home">
-      HomePage
       <InspirationalImage />
       <MyPlansCarousel />
       <BiblePassageInterface />
       <MenuBar linksToShow={{ home: false, newPlan: true, account: true }} />
     </div>
   );
-};
+}
 
 export default HomePage;
