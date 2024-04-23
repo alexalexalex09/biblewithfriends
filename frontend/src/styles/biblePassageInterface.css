@@ -1,0 +1,59 @@
+.browse-button i {
+    font-weight: 900;
+    font-size: 28px;
+    padding: 2px;
+}
+
+
+
+.bible-passage-interface {
+    margin: 20px 15px;
+    display: grid;
+    grid-template-columns: 9.5em 3em 2em 32px;
+    grid-template-rows: 3em;
+    gap: 0px 17px;
+    grid-auto-flow: row;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    grid-template-areas:
+        "bible-dropdown chapter-input verse-input browse-button";
+}
+      
+.bible-dropdown { grid-area: bible-dropdown; }
+
+.chapter-input { grid-area: chapter-input; }
+
+.verse-input { grid-area: verse-input; }
+
+.browse-button { 
+    grid-area: browse-button; 
+    width: 32px;
+    height: 32px;
+    align-self: end;
+}
+      
+.bible-passage-interface label {
+    font-size: 16px;
+}
+
+.bible-passage-interface select, .bible-passage-interface input {
+    height: 1.7em;
+    font-family: 'Kreon';
+    font-size: 19px;
+}
+
+#chapter-input-number, #verse-input-num {
+    min-width: 2.9em;
+}
+
+.bible-passage-interface input {
+    width: 2em;
+}
+
+.bible-passage-interface .bible-dropdown, .bible-passage-interface .chapter-input, .bible-passage-interface .verse-input {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: center;
+}

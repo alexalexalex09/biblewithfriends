@@ -1,0 +1,40 @@
+.menu-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    height: 50px;
+    width: 100%;
+    background-color: #9F9F9F;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr;
+    grid-template-areas: "left center right";
+}
+
+.menu-bar a {
+    color:white;
+    text-decoration: none;
+}
+
+#menu-new-plan {
+    align-self: center;
+}
+
+#menu-new-plan i {
+    font-size: 36px;
+}
+
+#menu-account {
+    align-self: end;
+    justify-self: end;
+    padding-bottom: 7px; 
+}
+
+#menu-account i {
+    font-size: 32px;
+    margin: 0px 10px;
+}
+
+#menu-account span {
+    font-size: 24px;
+}
