@@ -12,7 +12,9 @@ function BibleDisplay() {
   useEffect(() => {
     // Fetch data from the URL
     fetch(
-      "/passage" + book + "%20" + chapter + (verse === "1") ? ":" + verse : ""
+      "/bible?book=" + book + "&chapter=" + chapter + (verse === "1")
+        ? ""
+        : "&verse=" + verse
     )
       .then((response) => {
         if (!response.ok) {
@@ -41,7 +43,7 @@ function BibleDisplay() {
 
   return (
     <div>
-      <div class="biblePassage">
+      <div className="biblePassage">
         {data && (
           <div>
             <h2>{data.title}</h2>

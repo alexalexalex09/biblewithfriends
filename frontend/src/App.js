@@ -12,7 +12,7 @@ function App() {
         <Route path="/">
           <Route index element={<HomePage />} />
           <Route path="settings" element={<SettingsPage />} />
-          <Route path="bible/:book/:chapter/:verse" element={<BiblePage />} />
+          <Route path="bible" element={<BiblePage />} />
         </Route>
       </Routes>
     </Router>

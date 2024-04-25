@@ -1,21 +1,22 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../styles/biblePassageInterface.css";
 import { Bible } from "../components/BibleInfo.js";
 
 // Bible Passage Interface Component
 function BiblePassageInterface() {
-  const [book, setBook] = useState("");
+  const [book, setBook] = useState("Genesis");
   const [chapter, setChapter] = useState(1);
-  const [verse, setVerse] = useState(0);
-  const navigate = useNavigate();
+  const [verse, setVerse] = useState(1);
+  const [data, setData] = useState("");
 
   const handleBookSelect = (event) => {
     const selectedBookName = event.target.value;
     setBook(selectedBookName);
     // Set the number of verses in chapter 1 of the selected book
     if (selectedBookName && Bible[selectedBookName].versesPerChapter) {
-      setVerse(Bible[selectedBookName].versesPerChapter[0]);
+      setChapter(1);
+      setVerse(1);
     }
   };
 
@@ -24,18 +25,33 @@ function BiblePassageInterface() {
     setChapter(selectedChapterNum);
     // Set the number of verses in the selected chapter
     if (book && Bible[book].versesPerChapter) {
-      setVerse(Bible[book].versesPerChapter[selectedChapterNum - 1]);
+      setVerse(1);
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleVerseSelect = (event) => {
+    const selectedVerseNum = parseInt(event.target.value);
+    setVerse(selectedVerseNum);
+    // Set the number of verses in the selected chapter
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!book.trim() || chapter <= 0 || verse <= 0) {
       return;
     }
-    navigate(
-      `/bible/${book.toLowerCase().replace(/\s/g, "")}/${chapter}/${verse}`
-    );
+    try {
+      const response = await axios.get(
+        `/bible?book=${book.replace(
+          /\s/g,
+          "%20"
+        )}&chapter=${chapter}&verse=${verse}`
+      );
+      setData(response.data);
+      console.log(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -71,12 +87,15 @@ function BiblePassageInterface() {
       </div>
       <div className="verse-input">
         <label htmlFor="verse-input">Verse</label>
-        <select id="verse-input-num">
-          {[...Array(verse).keys()].map((verseNum) => (
-            <option key={verseNum + 1} value={verseNum + 1}>
-              {verseNum + 1}
-            </option>
-          ))}
+        <select id="verse-input-num" onChange={handleVerseSelect} value={verse}>
+          {chapter &&
+            [...Array(Bible[book].versesPerChapter[chapter]).keys()].map(
+              (verseNum) => (
+                <option key={verseNum + 1} value={verseNum + 1}>
+                  {verseNum + 1}
+                </option>
+              )
+            )}
         </select>
       </div>
       {/* Button for opening Bible browser */}
