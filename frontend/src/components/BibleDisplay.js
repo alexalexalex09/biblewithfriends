@@ -10,6 +10,19 @@ function BibleDisplay() {
   const [error, setError] = useState(null); // State to hold any error
   const { book, chapter, verse } = useParams();
 
+  const bibleFormat = (data) => {
+    // Split the text into individual verses
+    const verses = data.bibleText.split(/\n+(?=\d{1,3})/).filter(Boolean);
+    console.log(verses);
+    // Map each verse to an object with verseRef and text
+    const parsedVerses = verses.map((verse) => {
+      // Extract the verse reference and verse text
+      const [verseRef, verseText] = verse.trim().split(/\s(.+)/);
+      return { verseRef: parseInt(verseRef), text: verseText };
+    });
+    return { title: data.title, parsedVerses: parsedVerses };
+  };
+
   useEffect(() => {
     // Fetch data from the URL
     if (!book.trim() || chapter <= 0 || verse <= 0) {
@@ -23,10 +36,9 @@ function BibleDisplay() {
             "%20"
           )}&chapter=${chapter}&verse=${verse}`
         );
-        setData(response.data);
+        const formattedData = bibleFormat(response.data);
+        setData(formattedData);
         setLoading(false);
-        //TODO: Remove
-        console.log(data);
       };
       fetchData();
     } catch (error) {
@@ -51,7 +63,14 @@ function BibleDisplay() {
         {data && (
           <div>
             <h2>{data.title}</h2>
-            <p>{data.bibleText}</p>
+            <div>
+              {data.parsedVerses.map(({ verseRef, text }) => (
+                <>
+                  <sup key={verseRef}>{verseRef}</sup>
+                  <span>{text}</span>
+                </>
+              ))}
+            </div>
           </div>
         )}
       </div>
