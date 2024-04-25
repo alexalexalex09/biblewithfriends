@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import "../styles/settings.css"; // Import your CSS file for styling
 import MenuBar from "./MenuBar";
 
@@ -11,26 +12,29 @@ function BibleDisplay() {
 
   useEffect(() => {
     // Fetch data from the URL
-    fetch(
-      "/bible?book=" + book + "&chapter=" + chapter + (verse === "1")
-        ? ""
-        : "&verse=" + verse
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        return response.text();
-      })
-      .then((data) => {
+    if (!book.trim() || chapter <= 0 || verse <= 0) {
+      return;
+    }
+    try {
+      const fetchData = async () => {
+        const response = await axios.get(
+          `/bible?book=${book.replace(
+            /\s/g,
+            "%20"
+          )}&chapter=${chapter}&verse=${verse}`
+        );
+        setData(response.data);
+        setLoading(false);
+        //TODO: Remove
         console.log(data);
-        setData(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
+      };
+      fetchData();
+    } catch (error) {
+      setLoading(false);
+      console.error("Error:", error);
+      setError(error);
+    }
+    //eslint-disable-next-line
   }, []); // Empty dependency array to ensure useEffect only runs once
 
   if (loading) {
@@ -47,7 +51,7 @@ function BibleDisplay() {
         {data && (
           <div>
             <h2>{data.title}</h2>
-            <p>{data.verse}</p>
+            <p>{data.bibleText}</p>
           </div>
         )}
       </div>

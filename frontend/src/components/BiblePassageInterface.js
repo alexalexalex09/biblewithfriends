@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../styles/biblePassageInterface.css";
 import { Bible } from "../components/BibleInfo.js";
 
@@ -8,7 +8,7 @@ function BiblePassageInterface() {
   const [book, setBook] = useState("Genesis");
   const [chapter, setChapter] = useState(1);
   const [verse, setVerse] = useState(1);
-  const [data, setData] = useState("");
+  const navigate = useNavigate();
 
   const handleBookSelect = (event) => {
     const selectedBookName = event.target.value;
@@ -37,21 +37,7 @@ function BiblePassageInterface() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!book.trim() || chapter <= 0 || verse <= 0) {
-      return;
-    }
-    try {
-      const response = await axios.get(
-        `/bible?book=${book.replace(
-          /\s/g,
-          "%20"
-        )}&chapter=${chapter}&verse=${verse}`
-      );
-      setData(response.data);
-      console.log(data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    navigate(`/bible/${book}/${chapter}/${verse}`);
   };
 
   return (
