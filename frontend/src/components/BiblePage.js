@@ -5,7 +5,7 @@ import MenuBar from "./MenuBar";
 
 function BiblePage() {
   return (
-    <div className="settings-page">
+    <div className="bible-page">
       <BibleDisplay />
       <MenuBar linksToShow={{ home: true, newPlan: false, account: false }} />
     </div>

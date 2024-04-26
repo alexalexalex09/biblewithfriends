@@ -1,0 +1,11 @@
+.bibleTextContainer h2 {
+    margin-left: 10px;
+}
+
+.bibleText {
+    height: 82vh;
+    overflow: scroll;
+    margin: 0px 10px 0px 25px;
+    padding-right: 5px;
+    max-width: 30em;
+}

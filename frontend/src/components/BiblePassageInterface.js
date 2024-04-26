@@ -7,7 +7,6 @@ import { Bible } from "../components/BibleInfo.js";
 function BiblePassageInterface() {
   const [book, setBook] = useState("Genesis");
   const [chapter, setChapter] = useState(1);
-  const [verse, setVerse] = useState(1);
   const navigate = useNavigate();
 
   const handleBookSelect = (event) => {
@@ -16,7 +15,6 @@ function BiblePassageInterface() {
     // Set the number of verses in chapter 1 of the selected book
     if (selectedBookName && Bible[selectedBookName].versesPerChapter) {
       setChapter(1);
-      setVerse(1);
     }
   };
 
@@ -24,20 +22,11 @@ function BiblePassageInterface() {
     const selectedChapterNum = parseInt(event.target.value);
     setChapter(selectedChapterNum);
     // Set the number of verses in the selected chapter
-    if (book && Bible[book].versesPerChapter) {
-      setVerse(1);
-    }
-  };
-
-  const handleVerseSelect = (event) => {
-    const selectedVerseNum = parseInt(event.target.value);
-    setVerse(selectedVerseNum);
-    // Set the number of verses in the selected chapter
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    navigate(`/bible/${book}/${chapter}/${verse}`);
+    navigate(`/bible/${book}/${chapter}`);
   };
 
   return (
@@ -69,19 +58,6 @@ function BiblePassageInterface() {
                 {chapterNum + 1}
               </option>
             ))}
-        </select>
-      </div>
-      <div className="verse-input">
-        <label htmlFor="verse-input">Verse</label>
-        <select id="verse-input-num" onChange={handleVerseSelect} value={verse}>
-          {chapter &&
-            [...Array(Bible[book].versesPerChapter[chapter]).keys()].map(
-              (verseNum) => (
-                <option key={verseNum + 1} value={verseNum + 1}>
-                  {verseNum + 1}
-                </option>
-              )
-            )}
         </select>
       </div>
       {/* Button for opening Bible browser */}

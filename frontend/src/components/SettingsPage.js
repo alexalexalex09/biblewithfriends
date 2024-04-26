@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/settings.css"; // Import your CSS file for styling
+import MenuBar from "./MenuBar";
 
 // Profile Section
 function ProfileSection() {
@@ -45,20 +46,6 @@ function PlansSection() {
           <li key={index}>{plan}</li>
         ))}
       </ul>
-    </div>
-  );
-}
-
-// Menu Bar Component for Settings Page
-function MenuBar() {
-  return (
-    <div className="menu-bar">
-      {/* Home Icon */}
-      <div className="home-icon">
-        {/* Insert your home icon here */}
-        <img src="home-icon.png" alt="Home Icon" />
-        <span>Home</span>
-      </div>
     </div>
   );
 }

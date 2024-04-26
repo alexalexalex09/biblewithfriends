@@ -9,7 +9,7 @@ function MenuBar({ linksToShow }) {
         <div className="menu-item" id="menu-home" style={{ gridArea: "left" }}>
           {/* Insert your home icon here */}
           <Link to="/">
-            <img src="home-icon.png" alt="Home Icon" />
+            <i className="fa-solid fa-house"></i>
             <span>Home</span>
           </Link>
         </div>

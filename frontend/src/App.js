@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SettingsPage from "./components/SettingsPage";
 import HomePage from "./components/HomePage";
 import BiblePage from "./components/BiblePage";
+import CreatePlanPage from "./components/CreatePlanPage";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Route path="/">
           <Route index element={<HomePage />} />
           <Route path="settings" element={<SettingsPage />} />
-          <Route path="bible/:book/:chapter/:verse" element={<BiblePage />} />
+          <Route path="bible/:book/:chapter" element={<BiblePage />} />
+          <Route path="create" element={<CreatePlanPage />} />
         </Route>
       </Routes>
     </Router>

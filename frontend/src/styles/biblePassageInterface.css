@@ -9,7 +9,7 @@
 .bible-passage-interface {
     margin: 20px 15px;
     display: grid;
-    grid-template-columns: 9.5em 3em 2em 32px;
+    grid-template-columns: 9.5em 3em 32px;
     grid-template-rows: 3em;
     gap: 0px 17px;
     grid-auto-flow: row;
@@ -17,7 +17,7 @@
     justify-items: center;
     justify-content: center;
     grid-template-areas:
-        "bible-dropdown chapter-input verse-input browse-button";
+        "bible-dropdown chapter-input browse-button";
 }
       
 .bible-dropdown { grid-area: bible-dropdown; }

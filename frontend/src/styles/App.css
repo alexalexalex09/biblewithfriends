@@ -1,3 +1,15 @@
+body,
+html {
+  width: 100%;
+  margin: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -56,4 +68,12 @@ button {
   background: none;
   border: none;
   padding: 0px;
+}
+
+i {
+  font-size: 36px;
+}
+
+.hidden {
+  display:none;
 }

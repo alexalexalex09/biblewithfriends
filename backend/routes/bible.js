@@ -7,11 +7,7 @@ const { JSDOM } = require("jsdom");
 router.get("/bible", async function (req, res, next) {
   console.log(req.query);
   //bible.oremus.org/?version=NRSVAE&passage=Mark%201.1-11
-  const response = await getBibleVerse(
-    req.query.book,
-    req.query.chapter,
-    req.query.verse
-  );
+  const response = await getBibleVerse(req.query.book, req.query.chapter);
   const doc = JSDOM.fragment(response);
   //const doc = dom.window.document;
   const title = doc.querySelector(".passageref").textContent;
@@ -21,7 +17,7 @@ router.get("/bible", async function (req, res, next) {
   res.send({ title: title, bibleText: bibleText });
 });
 
-async function getBibleVerse(book, chapter, verse) {
+async function getBibleVerse(book, chapter) {
   let promise = new Promise(function (resolve, reject) {
     let optString =
       "https://bible.oremus.org/?version=NRSV&passage=" +

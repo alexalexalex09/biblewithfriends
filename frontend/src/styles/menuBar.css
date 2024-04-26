@@ -25,16 +25,24 @@
 }
 
 #menu-account {
-    align-self: end;
     justify-self: end;
+}
+
+#menu-account, #menu-home {
+    align-self: end;
     padding-bottom: 7px; 
 }
 
-#menu-account i {
+#menu-account i, #menu-home i {
     font-size: 32px;
     margin: 0px 10px;
 }
 
-#menu-account span {
+#menu-account span, #menu-home span {
     font-size: 24px;
+}
+
+#menu-home {
+    grid-area: left;
+    justify-self: start;
 }
