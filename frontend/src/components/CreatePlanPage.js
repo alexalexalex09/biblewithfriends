@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import axios from "axios";
 import CropModal from "./CropModal";
 import MenuBar from "./MenuBar";
 import Carousel from "./Carousel";
@@ -24,7 +25,17 @@ function CreatePlanPage() {
   const updateIcon = (imgSrc) => {
     iconUrl.current = imgSrc;
   };
-  console.log(typeof updateIcon);
+
+  const savePlan = async () => {
+    try {
+      const response = await axios.post("/upload", {
+        imageDataUrl: iconUrl.current,
+      });
+      console.log("Upload successful:", response.data);
+    } catch (error) {
+      console.error("Upload failed:", error);
+    }
+  };
 
   return (
     <div className="createPage">
