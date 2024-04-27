@@ -6,3 +6,10 @@
     position: absolute;
     background: white;
 }
+
+.cropper {
+    height: 50vh;
+    width: 90vw;
+    overflow: hidden;
+    margin: 20px auto;
+}
