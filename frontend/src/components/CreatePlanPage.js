@@ -44,14 +44,14 @@ function CreatePlanPage() {
       </div>
       <div className="createForm">
         <div
-          className="planIcon"
+          className="planIcon square"
           onClick={handleUploadClick}
           style={{ backgroundImage: "url(" + iconUrl.current + ")" }}
         ></div>
         <div className="planTitle">
           <input type="text" onChange={handleTitleChange}></input>
         </div>
-        <Carousel options={{ type: "create" }} />
+        <Carousel />
       </div>
       <MenuBar linksToShow={{ home: true, newPlan: true, account: true }} />
       <div className="imageCropperDisplay">

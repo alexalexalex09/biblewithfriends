@@ -8,8 +8,23 @@ const cors = require("cors");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var bibleRouter = require("./routes/bible");
+var authRouter = require("./routes/oauth");
+var requestRouter = require("./routes/request");
 
 var app = express();
+
+app.options("*", function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:5000");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Headers", [
+    "X-Requested-With",
+    "content-type",
+    "credentials",
+  ]);
+  res.header("Access-Control-Allow-Methods", "GET,POST");
+  res.status(200);
+  next();
+});
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -25,6 +40,8 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/", bibleRouter);
+app.use("/oauth", authRouter);
+app.use("/request", requestRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

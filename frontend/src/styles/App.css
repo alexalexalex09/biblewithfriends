@@ -77,3 +77,14 @@ i {
 .hidden {
   display:none;
 }
+
+.square {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 7px;
+  filter: drop-shadow(4px 4px 4px #00000088);
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+}

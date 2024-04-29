@@ -1,8 +1,14 @@
 .createForm {
     display: grid;
-    grid-template-rows: 100px 1fr;
+    height: 75vh;
+    grid-template-rows: 100px 3em 1fr 100px;
     grid-row-gap: 20px;
     justify-items: center;
+    grid-template-areas: "planIcon" "planTitle" "." "carousel";
+}
+
+.planIcon {
+    grid-area: planIcon;
 }
 
 .offScreenInput {
@@ -14,15 +20,8 @@
     visibility: hidden;
 }
 
-.planIcon {
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
-    border-radius: 7px;
-    filter: drop-shadow(4px 4px 4px #00000088);
-    background-color: white;
-    background-size: cover;
-    background-position: center;
+.carousel {
+    grid-area: carousel;
 }
 
 .title {
@@ -33,4 +32,5 @@
     font-size: 30px;
     font-family: 'Kreon', sans-serif;
     text-align: center;
+    grid-area: planTitle;
 }
