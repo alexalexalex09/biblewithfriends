@@ -12,7 +12,6 @@ router.post("/", async function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Referrer-Policy", "no-referrer-when-downgrade");
   const redirectURL = "http://localhost:5000/oauth";
-  console.log({ redirectURL });
 
   const oAuth2Client = new OAuth2Client(
     process.env.CLIENT_ID,
@@ -27,6 +26,7 @@ router.post("/", async function (req, res, next) {
     prompt: "consent",
   });
 
+  console.log({ authorizeUrl });
   res.json({ url: authorizeUrl });
 });
 

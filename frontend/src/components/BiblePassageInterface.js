@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/biblePassageInterface.css";
+import styles from "../styles/biblePassageInterface.module.css";
 import { Bible } from "../components/BibleInfo.js";
 
 // Bible Passage Interface Component
@@ -30,11 +30,15 @@ function BiblePassageInterface() {
   };
 
   return (
-    <form className="bible-passage-interface" onSubmit={handleSubmit}>
+    <form className={styles.biblePassageInterface} onSubmit={handleSubmit}>
       {/* Dropdown for selecting Bible book */}
-      <div className="bible-dropdown">
-        <label htmlFor="book-dropdown">Book</label>
-        <select id="book-dropdown" onChange={handleBookSelect} value={book}>
+      <div className={styles.bibleDropdown}>
+        <label htmlFor={styles.bookDropdown}>Book</label>
+        <select
+          id={styles.bookDropdown}
+          onChange={handleBookSelect}
+          value={book}
+        >
           <option value="">Select a Book</option>
           {Object.keys(Bible).map((bookName) => (
             <option key={bookName} value={bookName}>
@@ -44,10 +48,10 @@ function BiblePassageInterface() {
         </select>
       </div>
       {/* Input boxes for entering chapter and verse */}
-      <div className="chapter-input">
-        <label htmlFor="chapter-input">Chap.</label>
+      <div className={styles.chapterInput}>
+        <label htmlFor={styles.chapterInput}>Chap.</label>
         <select
-          id="chapter-input-number"
+          id={styles.chapterInputNumber}
           onChange={handleChapterSelect}
           value={chapter}
         >
@@ -61,7 +65,7 @@ function BiblePassageInterface() {
         </select>
       </div>
       {/* Button for opening Bible browser */}
-      <button className="browse-button">
+      <button className={styles.browseButton}>
         <i className="fa-solid fa-circle-arrow-right"></i>
       </button>
     </form>

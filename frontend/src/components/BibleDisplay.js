@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "../styles/bibleDisplay.css"; // Import your CSS file for styling
+import styles from "../styles/bibleDisplay.module.css"; // Import your CSS file for styling
 import MenuBar from "./MenuBar";
 
 function BibleDisplay() {
@@ -57,11 +57,11 @@ function BibleDisplay() {
   }
 
   return (
-    <div className="bibleDisplayContainer">
+    <div className={styles.bibleDisplayContainer}>
       {data && (
-        <div className="bibleTextContainer">
+        <div className={styles.bibleTextContainer}>
           <h2>{data.title}</h2>
-          <div className="bibleText">
+          <div className={styles.bibleText}>
             {data.parsedVerses.map(({ verseRef, text }) => (
               <>
                 <sup key={verseRef}>{verseRef}</sup>

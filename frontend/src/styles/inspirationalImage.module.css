@@ -1,0 +1,5 @@
+.inspirationalImage img {
+    width: 70%;
+    border-radius: 5px;
+    filter: drop-shadow(4px 4px 4px #00000088);
+}

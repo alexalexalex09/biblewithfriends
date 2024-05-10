@@ -1,4 +1,4 @@
-.browse-button i {
+.browseButton i {
     font-weight: 900;
     font-size: 28px;
     padding: 2px;
@@ -6,7 +6,7 @@
 
 
 
-.bible-passage-interface {
+.biblePassageInterface {
     margin: 20px 15px;
     display: grid;
     grid-template-columns: 9.5em 3em 32px;
@@ -20,38 +20,38 @@
         "bible-dropdown chapter-input browse-button";
 }
       
-.bible-dropdown { grid-area: bible-dropdown; }
+.bibleDropdown { grid-area: bible-dropdown; }
 
-.chapter-input { grid-area: chapter-input; }
+.chapterInput { grid-area: chapter-input; }
 
-.verse-input { grid-area: verse-input; }
+.verseInput { grid-area: verse-input; }
 
-.browse-button { 
+.browseButton { 
     grid-area: browse-button; 
     width: 32px;
     height: 32px;
     align-self: end;
 }
       
-.bible-passage-interface label {
+.biblePassageInterface label {
     font-size: 16px;
 }
 
-.bible-passage-interface select, .bible-passage-interface input {
+.biblePassageInterface select, .biblePassageInterface input {
     height: 1.7em;
     font-family: 'Kreon';
     font-size: 19px;
 }
 
-#chapter-input-number, #verse-input-num {
+#chapterInputNumber, #verseInputNum {
     min-width: 2.9em;
 }
 
-.bible-passage-interface input {
+.biblePassageInterface input {
     width: 2em;
 }
 
-.bible-passage-interface .bible-dropdown, .bible-passage-interface .chapter-input, .bible-passage-interface .verse-input {
+.biblePassageInterface .bibleDropdown, .biblePassageInterface .chapterInput, .biblePassageInterface .verseInput {
     display: flex;
     flex-direction: column;
     text-align: left;

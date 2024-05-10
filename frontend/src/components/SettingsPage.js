@@ -1,11 +1,11 @@
 import React from "react";
-import "../styles/settings.css"; // Import your CSS file for styling
+import styles from "../styles/settings.module.css"; // Import your CSS file for styling
 import MenuBar from "./MenuBar";
 
 // Profile Section
 function ProfileSection() {
   return (
-    <div className="settings-section">
+    <div className={styles.settingsSection}>
       <h2>Profile</h2>
       <ul>
         <li>Change Username</li>
@@ -20,7 +20,7 @@ function ProfileSection() {
 // Reading Section
 function ReadingSection() {
   return (
-    <div className="settings-section">
+    <div className={styles.settingsSection}>
       <h2>Reading</h2>
       <ul>
         <li>Text Size</li>

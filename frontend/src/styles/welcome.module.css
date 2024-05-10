@@ -1,0 +1,21 @@
+.title {
+    max-width: 6em;
+    margin-bottom: 10px;
+}
+
+.googleButton {
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.container {
+    margin: 30px;
+}
+
+.siteInfo {
+    color: var(--textBright);
+    margin-top:50px;
+}

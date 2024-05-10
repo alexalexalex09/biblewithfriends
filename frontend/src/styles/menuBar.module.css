@@ -1,49 +1,49 @@
-.menu-bar {
-    position: absolute;
+.menuBar {
+    position: fixed;
     bottom: 0;
     left: 0px;
     height: 50px;
     width: 100%;
     /*background-color: #9F9F9F;*/
-    background-color: #577594;
+    background-color: var(--blue-background);
     color: white;
     display: grid;
     grid-template-columns: 1fr 32px 1fr;
     grid-template-areas: "left center right";
 }
 
-.menu-bar a {
-    color:white;
+.menuBar a {
+    color:var(--white);
     text-decoration: none;
 }
 
-#menu-new-plan {
+#menuNewPlan {
     align-self: center;
 }
 
-#menu-new-plan i {
+#menuNewPlan i {
     font-size: 36px;
 }
 
-#menu-account {
+#menuAccount {
     justify-self: end;
 }
 
-#menu-account, #menu-home {
+#menuAccount, #menuHome {
     align-self: end;
     padding-bottom: 7px; 
 }
 
-#menu-account i, #menu-home i {
+#menuAccount i, #menuHome i {
     font-size: 32px;
     margin: 0px 10px;
 }
 
-#menu-account span, #menu-home span {
+#menuAccount span, #menuHome span {
     font-size: 24px;
 }
 
-#menu-home {
+#menuHome {
     grid-area: left;
     justify-self: start;
 }

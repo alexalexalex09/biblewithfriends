@@ -1,0 +1,28 @@
+.planItem {
+    display: block;
+}
+.planImage {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    background-color: white;
+    filter: drop-shadow(0px 4px 4px #00000066);
+    border-radius: 90px;
+    margin: 0 auto;
+}
+
+.planImage img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius: 90px;
+}
+
+.planTitle {
+    font-family: "Domine", serif;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 18px;
+    color: var(--textDark);
+    width: 10em;
+}

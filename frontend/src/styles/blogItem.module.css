@@ -1,0 +1,24 @@
+.blogItem {
+    display: block;
+}
+
+.blogImage {
+    width: 14em;
+    height: 7em;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.blogImage img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.blogTitle {
+    font-family: "Domine", serif;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 18px;
+    color: var(--textDark);
+}

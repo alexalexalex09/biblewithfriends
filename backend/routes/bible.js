@@ -5,7 +5,6 @@ const { JSDOM } = require("jsdom");
 
 /* GET users listing. */
 router.get("/bible", async function (req, res, next) {
-  console.log(req.query);
   //bible.oremus.org/?version=NRSVAE&passage=Mark%201.1-11
   const response = await getBibleVerse(req.query.book, req.query.chapter);
   const doc = JSDOM.fragment(response);

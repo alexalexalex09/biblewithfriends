@@ -1,3 +1,12 @@
+:root {
+  --background: #EDF3FF;
+  --textDark: #06384E;
+  --textBright: #3A95FF;
+  --white: #FFF;
+  --black: #000;
+  --blue-background: #577594;
+}
+
 body,
 html {
   width: 100%;
@@ -26,7 +35,6 @@ body,
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -47,15 +55,6 @@ body,
   to {
     transform: rotate(360deg);
   }
-}
-
-body {
-  font-family: 'Kreon', sans-serif;
-}
-
-h2 {
-  font-size: 32px;
-  font-weight: normal;
 }
 
 input, select, textarea {
@@ -87,4 +86,34 @@ i {
   background-color: white;
   background-size: cover;
   background-position: center;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Kreon', serif;
+}
+
+h1, h3, h4 {
+  font-family: "Domine", serif
+}
+
+h1, h4 {
+  color: var(--textDark);
+}
+
+h2, h4 {
+  color: var(--textBright);
+}
+
+h1 {
+  font-weight: lighter;
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: normal;
 }

@@ -1,6 +1,6 @@
 
 
-.carousel-square.new-plan-square {
+.carouselSquare.newPlanSquare {
     width: 85px;
     height: 85px;
     border: 1px solid black;
@@ -12,11 +12,11 @@
     flex-direction: column;
 }
 
-.carousel-square.new-plan-square span {
+.carouselSquare.newPlanSquare span {
     font-size: 20px;
 }
 
-.carousel-square.new-plan-square i {
+.carouselSquare.newPlanSquare i {
     font-size: 50px;
     margin-top: 5px;
 }

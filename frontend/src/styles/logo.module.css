@@ -1,0 +1,23 @@
+.logo {
+    position: absolute;
+}
+
+.logotopRight {
+    top: 10px;
+    right: 10px;
+}
+
+.logotopLeft {
+    top: 10px;
+    left: 10px;
+}
+
+.logobottomRight {
+    bottom: 10px;
+    right: 10px;
+}
+
+.logobottomLeft {
+    bottom: 10px;
+    left: 10px;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/myPlansCarousel.css";
+import styles from "../styles/myPlansCarousel.module.css";
 
 // My Plans Carousel Component
 function MyPlansCarousel() {
@@ -10,9 +10,12 @@ function MyPlansCarousel() {
     navigate("/create");
   };
   return (
-    <div className="carousel">
+    <div className={styles.carousel}>
       {/* Carousel squares with icons */}
-      <div className="carousel-square new-plan-square" onClick={handleNewPlan}>
+      <div
+        className={`${styles.carouselSquare} ${styles.newPlanSquare}`}
+        onClick={handleNewPlan}
+      >
         <span>New Plan</span>
         <i className="fa-solid fa-book-medical"></i>
       </div>

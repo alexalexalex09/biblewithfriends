@@ -5,7 +5,7 @@ import ReactCrop, {
   centerCrop,
 } from "react-image-crop";
 import "../styles/ReactCrop.css";
-import "../styles/cropModal.css";
+import styles from "../styles/cropModal.module.css";
 
 // Main App Component
 function CropModal({ updateIcon, closeModal }) {
@@ -98,14 +98,20 @@ function CropModal({ updateIcon, closeModal }) {
   };
 
   return (
-    <div className="imageCropper" role="dialog" aria-modal="true">
-      <button className="cropperClose button" onClick={closeModal}>
+    <div className={styles.imageCropper} role="dialog" aria-modal="true">
+      <button
+        className={`${styles.cropperClose} ${styles.button}`}
+        onClick={closeModal}
+      >
         Close
       </button>
-      {error && <p className="error">{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
       {!imageUrl && (
-        <div className="uploadInterface">
-          <button className="cropperChoose button" onClick={handleUploadClick}>
+        <div className={styles.uploadInterface}>
+          <button
+            className={`${styles.cropperChoose} ${styles.button}`}
+            onClick={handleUploadClick}
+          >
             Choose Image
           </button>
         </div>
@@ -113,7 +119,7 @@ function CropModal({ updateIcon, closeModal }) {
       {imageUrl && (
         <>
           <button
-            className="cropperCrop button"
+            className={`${styles.cropperCrop} ${styles.button}`}
             onClick={() => {
               setCanvasPreview(
                 imageRef.current,
@@ -131,7 +137,7 @@ function CropModal({ updateIcon, closeModal }) {
           >
             Crop Image
           </button>
-          <div className="cropper">
+          <div className={styles.cropper}>
             <ReactCrop
               crop={crop}
               keepSelection
@@ -151,7 +157,7 @@ function CropModal({ updateIcon, closeModal }) {
       )}
       {crop && (
         <canvas
-          className="cropCanvas"
+          className={styles.cropCanvas}
           ref={previewCanvasRef}
           style={{
             border: "1px solid black",
@@ -163,7 +169,7 @@ function CropModal({ updateIcon, closeModal }) {
         ></canvas>
       )}
       <input
-        className="offScreenInput"
+        className={styles.offScreenInput}
         id="fileInput"
         type="file"
         accept="image/*"

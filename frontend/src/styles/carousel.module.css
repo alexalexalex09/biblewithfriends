@@ -1,0 +1,32 @@
+.carousel .square {
+    display: grid;
+    grid-template-rows: 1fr 2em;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.square div {
+    align-content: center;
+}
+
+.addTitle {
+    font-size: 1.2em;
+}
+
+.carousel {
+    display: flex;
+    width: calc(100vw - 35px);
+    overflow-x: scroll;
+}
+
+.blogCarousel {
+    column-gap: 50px;
+    padding-bottom: 15px;
+}
+
+.planCarousel {
+    column-gap: 30px;
+    margin-bottom: 30px;
+    height: 200px;
+}

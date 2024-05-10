@@ -18,10 +18,8 @@ async function getUserData(access_token) {
 /* GET home page. */
 router.get("/", async function (req, res, next) {
   const code = req.query.code;
-
-  console.log(code);
   try {
-    const redirectURL = "http://127.0.0.1:3000/oauth";
+    const redirectURL = "http://localhost:5000/oauth";
     const oAuth2Client = new OAuth2Client(
       process.env.CLIENT_ID,
       process.env.CLIENT_SECRET,
@@ -32,13 +30,14 @@ router.get("/", async function (req, res, next) {
     await oAuth2Client.setCredentials(oAuth2TokenResponse.tokens);
     console.info("Tokens acquired.");
     const user = oAuth2Client.credentials;
-    console.log("credentials", user);
     await getUserData(oAuth2Client.credentials.access_token);
+    console.log("isAuthenticated: " + req.session.isAuthenticated);
+    console.log("function:" + req.isAuthenticated);
   } catch (err) {
-    console.log("Error logging in with OAuth2 user", err);
+    console.log("Error logging in with OAuth2 user:", err);
   }
 
-  res.redirect(303, "http://localhost:3000/");
+  res.redirect(303, "http://localhost:5000/home");
 });
 
 module.exports = router;

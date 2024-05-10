@@ -1,12 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/menuBar.css";
+import styles from "../styles/menuBar.module.css";
 
 function MenuBar({ linksToShow }) {
   return (
-    <div className="menu-bar">
+    <div className={styles.menuBar}>
+      {linksToShow.blog && (
+        <div
+          className={styles.menuItem}
+          id={styles.menuHome}
+          style={{ gridArea: "left" }}
+        >
+          {/* Insert your home icon here */}
+          <Link to="/blog">
+            <i className="fa-solid fa-newspaper"></i>
+            <span>Blog</span>
+          </Link>
+        </div>
+      )}
       {linksToShow.home && (
-        <div className="menu-item" id="menu-home" style={{ gridArea: "left" }}>
+        <div
+          className={styles.menuItem}
+          id={styles.menuHome}
+          style={{ gridArea: "left" }}
+        >
           {/* Insert your home icon here */}
           <Link to="/">
             <i className="fa-solid fa-house"></i>
@@ -16,8 +33,8 @@ function MenuBar({ linksToShow }) {
       )}
       {linksToShow.newPlan && (
         <div
-          className="menu-item"
-          id="menu-new-plan"
+          className={styles.menuItem}
+          id={styles.menuNewPlan}
           style={{ gridArea: "center" }}
         >
           <i className="fa-solid fa-book-medical"></i>
@@ -25,12 +42,24 @@ function MenuBar({ linksToShow }) {
       )}
       {linksToShow.account && (
         <div
-          className="menu-item"
-          id="menu-account"
+          className={styles.menuItem}
+          id={styles.menuAccount}
           style={{ gridArea: "right" }}
         >
           <Link to="/settings">
             <span>Account</span>
+            <i className="fa-solid fa-user"></i>
+          </Link>
+        </div>
+      )}
+      {linksToShow.signIn && (
+        <div
+          className={styles.menuItem}
+          id={styles.menuAccount}
+          style={{ gridArea: "right" }}
+        >
+          <Link to="/dashboard">
+            <span>Sign in</span>
             <i className="fa-solid fa-user"></i>
           </Link>
         </div>

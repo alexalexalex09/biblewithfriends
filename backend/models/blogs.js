@@ -3,19 +3,21 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 //Create schema
-var PlanSchema = new Schema(
+var BlogSchema = new Schema(
   {
     title: String,
-    owner: String,
-    days: Number,
-    public: Boolean,
+    author: String,
+    content: String,
+    date: Date,
+    image: String,
+    published: Boolean,
   },
   {
-    collection: "plans",
+    collection: "blogs",
   }
 );
 
-module.exports = mongoose.model("Plan", PlanSchema);
+module.exports = mongoose.model("Blog", BlogSchema);
 /*
 
 //Export function to create "SomeModel" model class

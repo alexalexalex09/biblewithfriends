@@ -3,11 +3,12 @@ import axios from "axios";
 import CropModal from "./CropModal";
 import MenuBar from "./MenuBar";
 import Carousel from "./Carousel";
-import "../styles/createPlanPage.css";
+import styles from "../styles/createPlanPage.module.css";
 import "../styles/ReactCrop.css";
 
 // Main App Component
 function CreatePlanPage() {
+  //eslint-disable-next-line
   const [title, setTitle] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const iconUrl = useRef(`${process.env.PUBLIC_URL}/images/inspiring/1.png`);
@@ -19,7 +20,6 @@ function CreatePlanPage() {
 
   const handleUploadClick = () => {
     setModalOpen(true);
-    // Trigger file input click
   };
 
   const updateIcon = (imgSrc) => {
@@ -38,23 +38,23 @@ function CreatePlanPage() {
   };
 
   return (
-    <div className="createPage">
-      <div className="title">
+    <div className={styles.createPage}>
+      <div className={styles.title}>
         <h2>Create a Plan</h2>
       </div>
-      <div className="createForm">
+      <div className={styles.createForm}>
         <div
-          className="planIcon square"
+          className={`${styles.planIcon} ${styles.square}`}
           onClick={handleUploadClick}
           style={{ backgroundImage: "url(" + iconUrl.current + ")" }}
         ></div>
-        <div className="planTitle">
+        <div className={styles.planTitle}>
           <input type="text" onChange={handleTitleChange}></input>
         </div>
         <Carousel />
       </div>
       <MenuBar linksToShow={{ home: true, newPlan: true, account: true }} />
-      <div className="imageCropperDisplay">
+      <div className={styles.imageCropperDisplay}>
         {modalOpen && (
           <CropModal
             updateIcon={updateIcon}
