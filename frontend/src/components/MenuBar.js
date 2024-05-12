@@ -58,7 +58,7 @@ function MenuBar({ linksToShow }) {
           id={styles.menuAccount}
           style={{ gridArea: "right" }}
         >
-          <Link to="/dashboard">
+          <Link to="/">
             <span>Sign in</span>
             <i className="fa-solid fa-user"></i>
           </Link>

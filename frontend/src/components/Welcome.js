@@ -8,12 +8,7 @@ import styles from "../styles/welcome.module.css"; // Import your CSS file for s
 
 function Welcome() {
   async function auth() {
-    const response = await fetch("/request", {
-      method: "post",
-    });
-
-    const data = await response.json();
-    window.location.href = data.url;
+    window.open("http://localhost:5000/oauth/google", "_self");
   }
 
   return (

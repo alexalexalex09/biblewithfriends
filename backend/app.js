@@ -1,63 +1,68 @@
+const cookieSession = require("cookie-session");
 var createError = require("http-errors");
 var express = require("express");
+const cors = require("cors");
+require("./oauth.js");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-const cors = require("cors");
 const mongoose = require("mongoose");
-const session = require("express-session");
-
-var usersRouter = require("./routes/users");
-var bibleRouter = require("./routes/bible");
-var authRouter = require("./routes/oauth");
-var requestRouter = require("./routes/request");
-var carouselRouter = require("./routes/carousels");
-
-const baseUrl = path.join(__dirname, "public");
-
+const passport = require("passport");
+const dotenv = require("dotenv");
+const User = require("./models/users");
+const bibleRouter = require("./routes/bibleRouter.js");
+const oauthRouter = require("./routes/oauthRouter.js");
+const carouselRouter = require("./routes/carouselsRouter.js");
+dotenv.config(); // Load environment variables from .env file
 var app = express();
 
-app.use("/images", express.static("images"));
-app.get("/image/:imageName", (req, res) => {
-  const imageName = req.params.imageName;
-  res.sendFile(`${baseUrl}/images/${imageName}`);
-});
-
-app.use("/blogs", express.static("blogs"));
-app.get("/blog/:blogName", (req, res) => {
-  const blogName = req.params.blogName;
-  res.sendFile(`${baseUrl}/blogs/${blogName}`);
-});
-
-app.options("*", function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5000");
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Headers", [
-    "X-Requested-With",
-    "content-type",
-    "credentials",
-  ]);
-  res.header("Access-Control-Allow-Methods", "GET,POST");
-  res.status(200);
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["openreplay"],
+    maxAge: 24 * 60 * 60 * 100,
+  })
+);
+app.use(function (request, response, next) {
+  if (request.session && !request.session.regenerate) {
+    request.session.regenerate = (cb) => {
+      cb();
+    };
+  }
+  if (request.session && !request.session.save) {
+    request.session.save = (cb) => {
+      cb();
+    };
+  }
   next();
 });
 
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "pug");
+app.use(passport.initialize());
+app.use(passport.session());
 
-//mongoose setup
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
+
+const baseUrl = path.join(__dirname, "public");
+
+//mongoose database setup
 mongoose.connect(process.env.MONGO_URL, {
   w: "majority",
   family: 4,
 });
-
+mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
   console.log("Connected to MongoDB");
 });
-
+/*
+//Set up sessions/
 const MongoStore = require("connect-mongo");
 var sess = {
   secret: process.env.CONNECT_MONGO_SECRET,
@@ -82,19 +87,35 @@ if (app.get("env") === "production") {
   app.set("trust proxy", 1);
 }
 app.use(session(sess));
+*/
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(baseUrl));
-app.use(cors());
 
-app.use("/users", usersRouter);
+// view engine setup
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+
+//Static files setup
+app.use("/images", express.static("images"));
+app.get("/image/:imageName", (req, res) => {
+  const imageName = req.params.imageName;
+  res.sendFile(`${baseUrl}/images/${imageName}`);
+});
+
+app.use("/blogs", express.static("blogs"));
+app.get("/blog/:blogName", (req, res) => {
+  const blogName = req.params.blogName;
+  res.sendFile(`${baseUrl}/blogs/${blogName}`);
+});
+
+//Route setup
 app.use("/", bibleRouter);
 app.use("/", carouselRouter);
-app.use("/oauth", authRouter);
-app.use("/request", requestRouter);
+app.use("/oauth", oauthRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

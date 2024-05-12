@@ -4,13 +4,16 @@ import MenuBar from "./MenuBar";
 
 // Profile Section
 function ProfileSection() {
+  const logout = () => {
+    window.open("http://localhost:5000/oauth/logout", "_self");
+  };
   return (
     <div className={styles.settingsSection}>
       <h2>Profile</h2>
       <ul>
         <li>Change Username</li>
         <li>Change Profile Picture</li>
-        <li>Sign Out</li>
+        <li onClick={logout}>Sign Out</li>
         <li>Delete Account</li>
       </ul>
     </div>
