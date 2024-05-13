@@ -5,7 +5,6 @@ const router = express.Router();
 const passport = require("passport");
 
 router.get("/login", (req, res) => {
-  console.log(req.user);
   if (req.user) {
     res.status(200).json({
       success: true,
@@ -22,7 +21,9 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
+  console.log("Logging out");
   req.logout((err) => {
+    console.log({ err });
     if (err) {
       return next(err);
     }
@@ -41,7 +42,6 @@ router.get(
 );
 
 router.get("/user", (req, res) => {
-  console.log(req.user);
   if (req.user) {
     res.status(200).json({
       success: true,

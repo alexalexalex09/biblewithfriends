@@ -49,23 +49,18 @@ function Carousel({ carouselId, displayTitle }) {
   return (
     <div className={styles.carousel + " " + additionalClasses}>
       {items.map((div) => (
-        <>
+        <React.Fragment key={div._id}>
           {carouselId === "blogs" && (
-            <BlogItem
-              key={div.id}
-              title={div.title}
-              image={div.image}
-            ></BlogItem>
+            <BlogItem title={div.title} image={div.image}></BlogItem>
           )}
           {carouselId !== "blogs" && (
             <PlanItem
-              key={div.id}
               title={div.title}
               image={div.image}
               displayTitle={displayTitle}
             ></PlanItem>
           )}
-        </>
+        </React.Fragment>
       ))}
       {carouselId !== "allPlans" && carouselId !== "blogs" && (
         <div className={`${styles.item} ${styles.addNew}`} onClick={addNew}>

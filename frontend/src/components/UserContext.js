@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
       })
         .then((response) => {
           if (response.status === 200) return response.json();
-          throw new Error("authentication has failed!");
+          throw new Error("Not logged in, homepage rendered");
         })
         .then((resObject) => {
           setUser(resObject.user);

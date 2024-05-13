@@ -7,7 +7,7 @@ router.post("/getCarousel", async function (req, res, next) {
   switch (req.body.id) {
     case "allPlans":
       try {
-        const titles = await Plan.find({ "public": true }).select("-_id");
+        const titles = await Plan.find({ "public": true }).select();
         res.json(titles);
       } catch (error) {
         console.error("Failed to retrieve public plans:", error);

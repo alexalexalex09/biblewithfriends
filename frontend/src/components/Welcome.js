@@ -28,11 +28,13 @@ function Welcome() {
         carouselId="allPlans"
         disableAddNew="true"
         displayTitle="true"
+        key="allPlans"
       />
       <Carousel
         carouselId="blogs"
         disableAddNew="true"
         customClass="blogCarousel"
+        key="blogs"
       />
       <div className={styles.siteInfo}>
         <p>Over 100 reading plans.</p>

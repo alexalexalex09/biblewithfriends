@@ -1,4 +1,4 @@
-const cookieSession = require("cookie-session");
+const session = require("express-session");
 var createError = require("http-errors");
 var express = require("express");
 const cors = require("cors");
@@ -17,25 +17,13 @@ dotenv.config(); // Load environment variables from .env file
 var app = express();
 
 app.use(
-  cookieSession({
-    name: "session",
-    keys: ["openreplay"],
-    maxAge: 24 * 60 * 60 * 100,
+  session({
+    secret: process.env.CLIENT_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false },
   })
 );
-app.use(function (request, response, next) {
-  if (request.session && !request.session.regenerate) {
-    request.session.regenerate = (cb) => {
-      cb();
-    };
-  }
-  if (request.session && !request.session.save) {
-    request.session.save = (cb) => {
-      cb();
-    };
-  }
-  next();
-});
 
 app.use(passport.initialize());
 app.use(passport.session());
