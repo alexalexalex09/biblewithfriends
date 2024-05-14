@@ -47,3 +47,7 @@
 .ReactCrop {
     vertical-align: middle;
 }
+
+.offScreenInput {
+    display:none;
+}

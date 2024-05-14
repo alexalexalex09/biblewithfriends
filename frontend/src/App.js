@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./styles/App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SettingsPage from "./components/SettingsPage";
-import Dashboard from "./components/Dashboard";
-import BiblePage from "./components/BiblePage";
-import CreatePlanPage from "./components/CreatePlanPage";
+import SettingsPage from "./pages/SettingsPage";
+import Dashboard from "./pages/Dashboard";
+import BiblePage from "./pages/BiblePage";
+import CreatePlanPage from "./pages/CreatePlanPage";
 import UserContext from "./components/UserContext";
 
 function App() {

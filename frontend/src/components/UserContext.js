@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Welcome from "./Welcome";
+import Welcome from "../pages/Welcome";
 
 const UserContext = createContext(null);
 
@@ -34,8 +34,6 @@ export const UserProvider = ({ children }) => {
     fetchUser();
   }, []);
   if (user) {
-    console.log("There is a user");
-    console.log({ children });
     return (
       <UserContext.Provider value={{ user, isLoading }}>
         {children}

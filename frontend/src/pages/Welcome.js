@@ -1,9 +1,9 @@
 import React from "react";
 import GoogleButton from "react-google-button";
-import Carousel from "./Carousel";
+import Carousel from "../components/Carousel";
 //import Testimonial from "./Testimonial";
-import MenuBar from "./MenuBar";
-import Logo from "./Logo";
+import MenuBar from "../components/MenuBar";
+import Logo from "../components/Logo";
 import styles from "../styles/welcome.module.css"; // Import your CSS file for styling
 
 function Welcome() {

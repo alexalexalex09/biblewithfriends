@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
-import CropModal from "./CropModal";
-import MenuBar from "./MenuBar";
-import Carousel from "./Carousel";
+import CropModal from "../components/CropModal";
+import MenuBar from "../components/MenuBar";
+import Carousel from "../components/Carousel";
 import styles from "../styles/createPlanPage.module.css";
 import "../styles/ReactCrop.css";
 
@@ -11,7 +11,7 @@ function CreatePlanPage() {
   //eslint-disable-next-line
   const [title, setTitle] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const iconUrl = useRef(`${process.env.PUBLIC_URL}/images/inspiring/1.png`);
+  const iconUrl = useRef(`/images/upload-image.png`);
 
   const handleTitleChange = (event) => {
     const newTitle = event.target.value;

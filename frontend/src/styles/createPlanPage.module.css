@@ -9,6 +9,25 @@
 
 .planIcon {
     grid-area: planIcon;
+    filter: drop-shadow(0px 4px 4px #00000066);
+    background-color: white;
+    background-position: center;
+    background-size: cover;
+    border-radius: 75px;
+    height:100px;
+    width: 100px;
+}
+
+.carousel .square {
+    display: grid;
+    grid-template-rows: 1fr 2em;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.square div {
+    align-content: center;
 }
 
 .offScreenInput {

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/settings.module.css"; // Import your CSS file for styling
-import MenuBar from "./MenuBar";
+import MenuBar from "../components/MenuBar";
 
 // Profile Section
 function ProfileSection() {
