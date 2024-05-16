@@ -6,16 +6,22 @@ import Dashboard from "./pages/Dashboard";
 import BiblePage from "./pages/BiblePage";
 import CreatePlanPage from "./pages/CreatePlanPage";
 import UserContext from "./components/UserContext";
+import PrivateRoutes from "./components/PrivateRoutes";
+import Welcome from "./pages/Welcome";
 
 function App() {
   return (
     <UserContext>
       <BrowserRouter>
         <Routes>
-          <Route index path="/" element={<Dashboard />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          <Route path="/bible/:book/:chapter" element={<BiblePage />} />
-          <Route path="/create" element={<CreatePlanPage />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path="/home" element={<Dashboard />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/bible/:book/:chapter" element={<BiblePage />} />
+            <Route path="/create" element={<CreatePlanPage />} />
+          </Route>
+          <Route path="/" element={<Welcome />} exact />
+          <Route path="*" element={<Welcome />} />
         </Routes>
       </BrowserRouter>
     </UserContext>

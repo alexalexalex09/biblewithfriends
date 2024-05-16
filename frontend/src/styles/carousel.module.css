@@ -1,12 +1,12 @@
-.carousel .square {
+.carousel .item {
     display: grid;
-    grid-template-rows: 1fr 2em;
+    grid-template-rows: 50px 29px;
     justify-content: center;
     text-align: center;
-
+    align-items: end;
 }
 
-.square div {
+.item div {
     align-content: center;
 }
 
@@ -28,5 +28,23 @@
 .planCarousel {
     column-gap: 30px;
     margin-bottom: 30px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.addNew {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    background-color: white;
+    filter: var(--filter);
+    border-radius: 90px;
+}
+
+.carouselWithTitle {
     height: 200px;
+}
+
+.addNewContainer {
+    display: block;
 }

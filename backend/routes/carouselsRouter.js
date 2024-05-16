@@ -30,6 +30,18 @@ router.post("/getCarousel", async function (req, res, next) {
 });
 
 router.post("/saveCarousel", async function (req, res, next) {
+  if (req.body.plan.length === 0) {
+    //Create a new plan
+    const plan = new Plan({
+      title: "",
+      owner: req.body.user,
+      days: 1,
+      public: true,
+    });
+    plan.save().then((res) => {
+      res.send();
+    });
+  }
   res.send();
 });
 

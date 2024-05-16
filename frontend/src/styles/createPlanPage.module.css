@@ -9,7 +9,7 @@
 
 .planIcon {
     grid-area: planIcon;
-    filter: drop-shadow(0px 4px 4px #00000066);
+    filter: var(--filter);
     background-color: white;
     background-position: center;
     background-size: cover;
@@ -18,7 +18,7 @@
     width: 100px;
 }
 
-.carousel .square {
+.carousel .item {
     display: grid;
     grid-template-rows: 1fr 2em;
     justify-content: center;
@@ -26,7 +26,7 @@
 
 }
 
-.square div {
+.item div {
     align-content: center;
 }
 
@@ -44,7 +44,9 @@
 }
 
 .title {
-    margin-left: 25px;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
 }
 
 .planTitle input {
@@ -52,4 +54,11 @@
     font-family: 'Kreon', sans-serif;
     text-align: center;
     grid-area: planTitle;
+    display: flex;
+    flex-direction: column;
+}
+
+.createPlanCarousel {
+    position: absolute;
+    bottom: 50px;
 }

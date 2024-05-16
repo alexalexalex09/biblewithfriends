@@ -1,10 +1,15 @@
 import React, { createContext, useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Welcome from "../pages/Welcome";
 
-const UserContext = createContext(null);
+export const UserContext = createContext(null);
 
-export const UserProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -33,6 +38,7 @@ export const UserProvider = ({ children }) => {
 
     fetchUser();
   }, []);
+  console.log(typeof children);
   if (user) {
     return (
       <UserContext.Provider value={{ user, isLoading }}>
@@ -44,12 +50,32 @@ export const UserProvider = ({ children }) => {
       <Router>
         <Routes>
           <Route path="/">
-            <Route index path="/" element={<Welcome />} />
+            <Route index path="/" element={<Welcome />} exact />
+            <Route path="/settings" element={<Navigate to="/" replace />} />
+            <Route path="/bible" element={<Navigate to="/" replace />} />
+            <Route path="/create" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
       </Router>
     );
   }
 };
+
+/*
+<UserContext.Provider value={{ user, isLoading }}>
+      {user ? (
+        { children }
+      ) : (
+        <Router>
+          <Routes>
+            <Route path="/">
+              <Route index path="/" element={<Welcome />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Route>
+          </Routes>
+        </Router>
+      )}
+    </UserContext.Provider>
+*/
 
 export default UserProvider;

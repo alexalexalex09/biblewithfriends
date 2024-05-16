@@ -11,7 +11,6 @@ function MyPlansCarousel() {
   };
   return (
     <div className={styles.carousel}>
-      {/* Carousel squares with icons */}
       <div
         className={`${styles.carouselSquare} ${styles.newPlanSquare}`}
         onClick={handleNewPlan}
@@ -19,10 +18,6 @@ function MyPlansCarousel() {
         <span>New Plan</span>
         <i className="fa-solid fa-book-medical"></i>
       </div>
-      {/* Example:
-          <div className="carousel-square">
-            <img src="plan-icon.png" alt="Plan Icon" />
-          </div> */}
     </div>
   );
 }

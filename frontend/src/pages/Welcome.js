@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleButton from "react-google-button";
-import Carousel from "../components/Carousel";
+import DisplayCarousel from "../components/DisplayCarousel";
 //import Testimonial from "./Testimonial";
 import MenuBar from "../components/MenuBar";
 import Logo from "../components/Logo";
@@ -24,13 +24,13 @@ function Welcome() {
         />
       </div>
       <h2 className={styles.plansTitle}>Over 100 reading plans</h2>
-      <Carousel
+      <DisplayCarousel
         carouselId="allPlans"
         disableAddNew="true"
         displayTitle="true"
         key="allPlans"
       />
-      <Carousel
+      <DisplayCarousel
         carouselId="blogs"
         disableAddNew="true"
         customClass="blogCarousel"

@@ -7,7 +7,7 @@
     width: 85px;
     height: 85px;
     border-radius: 75px;
-    filter: drop-shadow(0px 4px 4px #00000066);
+    filter: var(--filter);
     background-color: white;
     padding: 7px;
     display: flex;
