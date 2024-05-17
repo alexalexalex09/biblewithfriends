@@ -55,6 +55,7 @@ function PlanCarousel({ carouselId, displayTitle }) {
     <div
       className={styles.carousel + " " + styles.planCarousel + " " + titleClass}
     >
+      <div className={styles.spacer}></div>
       {items.length > 0
         ? items.map((div) => (
             <React.Fragment key={div._id}>

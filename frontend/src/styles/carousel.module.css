@@ -15,9 +15,14 @@
 }
 
 .carousel {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
     width: calc(100vw - 35px);
     overflow-x: scroll;
+}
+
+.spacer  {
+    width:calc(50vh - 50px - 30px - 30px);
 }
 
 .blogCarousel {

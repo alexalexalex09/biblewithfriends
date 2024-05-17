@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import styles from "../styles/menuBar.module.css";
 
 function MenuBar({ linksToShow }) {
+  async function auth() {
+    window.open("http://localhost:5000/oauth/google", "_self");
+  }
   return (
     <div className={styles.menuBar}>
       {linksToShow.blog && (
@@ -57,11 +60,10 @@ function MenuBar({ linksToShow }) {
           className={styles.menuItem}
           id={styles.menuAccount}
           style={{ gridArea: "right" }}
+          onClick={auth}
         >
-          <Link to="/">
-            <span>Sign in</span>
-            <i className="fa-solid fa-user"></i>
-          </Link>
+          <span>Sign in</span>
+          <i className="fa-solid fa-user"></i>
         </div>
       )}
     </div>
