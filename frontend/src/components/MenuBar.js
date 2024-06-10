@@ -4,7 +4,7 @@ import styles from "../styles/menuBar.module.css";
 
 function MenuBar({ linksToShow }) {
   async function auth() {
-    window.open("http://localhost:5000/oauth/google", "_self");
+    window.open(process.env.REACT_APP_PROXY_URL + "/oauth/google", "_self");
   }
   return (
     <div className={styles.menuBar}>

@@ -6,7 +6,10 @@ function InspirationalImage() {
   return (
     <div className={styles.inspirationalImage}>
       {/* Insert your inspirational image here */}
-      <img src="/images/inspiring/1.png" alt="Inspirational" />
+      <img
+        src={process.env.REACT_APP_PROXY_URL + "/images/inspiring/1.png"}
+        alt="Inspirational"
+      />
     </div>
   );
 }

@@ -33,7 +33,8 @@ function BibleDisplay() {
     try {
       const fetchData = async () => {
         const response = await axios.get(
-          `/bible?book=${book.replace(/\s/g, "%20")}&chapter=${chapter}`
+          process.env.REACT_APP_PROXY_URL +
+            `/bible?book=${book.replace(/\s/g, "%20")}&chapter=${chapter}`
         );
         const formattedData = bibleFormat(response.data);
         setData(formattedData);

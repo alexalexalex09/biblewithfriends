@@ -8,7 +8,7 @@ import styles from "../styles/welcome.module.css"; // Import your CSS file for s
 
 function Welcome() {
   async function auth() {
-    window.open("http://localhost:5000/oauth/google", "_self");
+    window.open(process.env.REACT_APP_PROXY_URL + "/oauth/google", "_self");
   }
 
   return (

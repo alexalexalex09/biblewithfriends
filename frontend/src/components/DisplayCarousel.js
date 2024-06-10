@@ -24,7 +24,7 @@ function DisplayCarousel({ carouselId, displayTitle }) {
     try {
       const body = { id: carouselId };
       const response = await axios.post(
-        "https://biblewithfriends.onrender.com/getCarousel",
+        process.env.REACT_APP_PROXY_URL + "/getCarousel",
         body
       );
       setItems(response.data);
@@ -36,7 +36,10 @@ function DisplayCarousel({ carouselId, displayTitle }) {
   const addNew = async () => {
     try {
       const body = { user: user.id, plan: planId };
-      const response = await axios.post("/saveCarousel", body);
+      const response = await axios.post(
+        process.env.REACT_APP_PROXY_URL + "/saveCarousel",
+        body
+      );
       setItems([...items, response.data]);
     } catch (error) {
       console.error("Failed to add data:", error);

@@ -24,7 +24,10 @@ function PlanCarousel({ carouselId, displayTitle }) {
   const getCarousel = async () => {
     try {
       const body = { id: carouselId };
-      const response = await axios.post("/getCarousel", body);
+      const response = await axios.post(
+        process.env.REACT_APP_PROXY_URL + "/getCarousel",
+        body
+      );
       console.log(carouselId + ": " + response.data.length);
       setItems(response.data);
     } catch (error) {
@@ -38,7 +41,10 @@ function PlanCarousel({ carouselId, displayTitle }) {
     } else {
       try {
         const body = { user: user.id, plan: planId };
-        const response = await axios.post("/saveCarousel", body);
+        const response = await axios.post(
+          process.env.REACT_APP_PROXY_URL + "/saveCarousel",
+          body
+        );
         setItems([...items, response.data]);
       } catch (error) {
         console.error("Failed to add data:", error);

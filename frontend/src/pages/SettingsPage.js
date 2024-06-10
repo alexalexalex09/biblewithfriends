@@ -5,7 +5,7 @@ import MenuBar from "../components/MenuBar";
 // Profile Section
 function ProfileSection() {
   const logout = () => {
-    window.open("http://127.0.0.1:5000/oauth/logout", "_self");
+    window.open(process.env.REACT_APP_PROXY_URL + "/oauth/logout", "_self");
   };
   return (
     <div className={styles.settingsSection}>

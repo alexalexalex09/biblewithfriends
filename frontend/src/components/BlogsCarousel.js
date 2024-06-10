@@ -13,7 +13,9 @@ function BlogsCarousel() {
 
   const getBlogs = async () => {
     try {
-      const response = await axios.post("/getBlogs");
+      const response = await axios.post(
+        process.env.REACT_APP_PROXY_URL + "/getBlogs"
+      );
       setBlogs(response.data);
     } catch (error) {
       console.error("Failed to fetch data:", error);

@@ -30,9 +30,12 @@ function CreatePlanPage() {
 
   const savePlan = async () => {
     try {
-      const response = await axios.post("/upload", {
-        imageDataUrl: iconUrl.current,
-      });
+      const response = await axios.post(
+        process.env.REACT_APP_PROXY_URL + "/upload",
+        {
+          imageDataUrl: iconUrl.current,
+        }
+      );
       console.log("Upload successful:", response.data);
     } catch (error) {
       console.error("Upload failed:", error);

@@ -15,7 +15,7 @@ const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchUser = () => {
-      fetch("/oauth/user", {
+      fetch(process.env.REACT_APP_PROXY_URL + "/oauth/user", {
         method: "GET",
         credentials: "include", // necessary for cookies to be sent along with the request if using sessions
         headers: {
