@@ -7,7 +7,9 @@ router.post("/getCarousel", async function (req, res, next) {
   switch (req.body.id) {
     case "allPlans":
       try {
+        console.log("trying");
         const titles = await Plan.find({ "public": true }).select();
+        console.log({ titles });
         res.json(titles);
       } catch (error) {
         console.error("Failed to retrieve public plans:", error);
@@ -17,7 +19,6 @@ router.post("/getCarousel", async function (req, res, next) {
     case "blogs":
       try {
         const blogs = await Blog.find({ "published": true });
-        console.log(blogs);
         res.json(blogs);
       } catch (error) {
         console.error("Failed to retrieve blogs:", error);
