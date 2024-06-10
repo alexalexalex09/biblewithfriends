@@ -17,6 +17,7 @@ router.post("/getCarousel", async function (req, res, next) {
     case "blogs":
       try {
         const blogs = await Blog.find({ "published": true });
+        console.log(blogs);
         res.json(blogs);
       } catch (error) {
         console.error("Failed to retrieve blogs:", error);
