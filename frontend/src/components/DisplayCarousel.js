@@ -23,7 +23,10 @@ function DisplayCarousel({ carouselId, displayTitle }) {
   const getCarousel = async () => {
     try {
       const body = { id: carouselId };
-      const response = await axios.post("/getCarousel", body);
+      const response = await axios.post(
+        "https://biblewithfriends.onrender.com/getCarousel",
+        body
+      );
       setItems(response.data);
     } catch (error) {
       console.error("Failed to fetch data:", error);
