@@ -5,6 +5,7 @@ import SettingsPage from "./pages/SettingsPage";
 import Dashboard from "./pages/Dashboard";
 import BiblePage from "./pages/BiblePage";
 import CreatePlanPage from "./pages/CreatePlanPage";
+import BrowsePlansPage from "./pages/BrowsePlansPage";
 import UserContext from "./components/UserContext";
 import PrivateRoutes from "./components/PrivateRoutes";
 import Welcome from "./pages/Welcome";
@@ -19,6 +20,7 @@ function App() {
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/bible/:book/:chapter" element={<BiblePage />} />
             <Route path="/create" element={<CreatePlanPage />} />
+            <Route path="/plans" element={<BrowsePlansPage />} />
           </Route>
           <Route path="/" element={<Welcome />} exact />
           <Route path="*" element={<Welcome />} />

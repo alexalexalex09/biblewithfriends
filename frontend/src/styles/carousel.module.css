@@ -10,15 +10,12 @@
     align-content: center;
 }
 
-.addTitle {
-    font-size: 1.2em;
-}
-
 .carousel {
     display: grid;
     grid-auto-flow: column;
     width: calc(100vw - 35px);
     overflow-x: scroll;
+    justify-items: center;
 }
 
 .spacer  {
@@ -32,12 +29,21 @@
 
 .planCarousel {
     column-gap: 30px;
-    margin-bottom: 30px;
+    margin: 0 auto 30px auto;
     padding: 10px;
     box-sizing: border-box;
 }
 
-.addNew {
+.carouselWithTitle {
+    height: 200px;
+}
+
+
+.addTitle, .browseTitle {
+    font-size: 1.2em;
+}
+
+.addNew, .browse {
     width: 100px;
     height: 100px;
     overflow: hidden;
@@ -46,10 +52,6 @@
     border-radius: 90px;
 }
 
-.carouselWithTitle {
-    height: 200px;
-}
-
-.addNewContainer {
+.addNewContainer, .browseContainer {
     display: block;
 }

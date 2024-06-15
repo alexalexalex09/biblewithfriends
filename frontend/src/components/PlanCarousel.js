@@ -61,7 +61,6 @@ function PlanCarousel({ carouselId, displayTitle }) {
     <div
       className={styles.carousel + " " + styles.planCarousel + " " + titleClass}
     >
-      <div className={styles.spacer}></div>
       {items.length > 0
         ? items.map((div) => (
             <React.Fragment key={div._id}>
@@ -73,6 +72,19 @@ function PlanCarousel({ carouselId, displayTitle }) {
             </React.Fragment>
           ))
         : ""}
+      <div className={styles.browseContainer}>
+        <div
+          className={`${styles.item} ${styles.browse}`}
+          onClick={() => {
+            navigate("/plans");
+          }}
+        >
+          <div className={styles.browseIcon}>
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <div className={styles.browseTitle}>Browse</div>
+        </div>
+      </div>
       <div className={styles.addNewContainer}>
         <div className={`${styles.item} ${styles.addNew}`} onClick={addNew}>
           <div className={styles.addIcon}>

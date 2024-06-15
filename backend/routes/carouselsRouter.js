@@ -40,7 +40,7 @@ router.post("/saveCarousel", async function (req, res, next) {
       days: 1,
       public: true,
     });
-    plan.save().then((res) => {
+    plan.save().then((response) => {
       res.send();
     });
   }
