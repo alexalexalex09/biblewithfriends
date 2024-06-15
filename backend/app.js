@@ -8,9 +8,9 @@ var logger = require("morgan");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const dotenv = require("dotenv");
-/* const bibleRouter = require("./routes/bibleRouter.js"); */
+const bibleRouter = require("./routes/bibleRouter.js");
 const oauthRouter = require("./routes/oauthRouter.js");
-/* const carouselRouter = require("./routes/carouselsRouter.js"); */
+const carouselRouter = require("./routes/carouselsRouter.js");
 dotenv.config(); // Load environment variables from .env file
 var app = express(); //Start app
 
@@ -87,7 +87,7 @@ app.use(express.static(baseUrl));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
-/* //Static files setup
+//Static files setup
 app.use("/images", express.static("images"));
 app.get("/image/:imageName", (req, res) => {
   const imageName = req.params.imageName;
@@ -98,11 +98,11 @@ app.use("/blogs", express.static("blogs"));
 app.get("/blog/:blogName", (req, res) => {
   const blogName = req.params.blogName;
   res.sendFile(`${baseUrl}/blogs/${blogName}`);
-}); */
+});
 
 //Route setup
-/* app.use("/", bibleRouter);
-app.use("/", carouselRouter); */
+app.use("/", bibleRouter);
+app.use("/", carouselRouter);
 app.use("/oauth", oauthRouter);
 
 // catch 404 and forward to error handler
