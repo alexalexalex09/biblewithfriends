@@ -29,6 +29,7 @@ const UserProvider = ({ children }) => {
           throw new Error("Not logged in, homepage rendered");
         })
         .then((resObject) => {
+          setIsLoading(false);
           setUser(resObject.user);
         })
         .catch((err) => {
@@ -38,44 +39,11 @@ const UserProvider = ({ children }) => {
 
     fetchUser();
   }, []);
-  console.log(typeof children);
-  if (user) {
-    return (
-      <UserContext.Provider value={{ user, isLoading }}>
-        {children}
-      </UserContext.Provider>
-    );
-  } else {
-    return (
-      <Router>
-        <Routes>
-          <Route path="/">
-            <Route index path="/" element={<Welcome />} exact />
-            <Route path="/settings" element={<Navigate to="/" replace />} />
-            <Route path="/bible" element={<Navigate to="/" replace />} />
-            <Route path="/create" element={<Navigate to="/" replace />} />
-          </Route>
-        </Routes>
-      </Router>
-    );
-  }
-};
-
-/*
-<UserContext.Provider value={{ user, isLoading }}>
-      {user ? (
-        { children }
-      ) : (
-        <Router>
-          <Routes>
-            <Route path="/">
-              <Route index path="/" element={<Welcome />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Route>
-          </Routes>
-        </Router>
-      )}
+  return (
+    <UserContext.Provider value={{ user, isLoading }}>
+      {children}
     </UserContext.Provider>
-*/
+  );
+};
 
 export default UserProvider;

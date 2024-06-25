@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import "./styles/App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SettingsPage from "./pages/SettingsPage";

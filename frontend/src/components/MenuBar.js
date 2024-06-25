@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/menuBar.module.css";
+import { UserContext } from "../components/UserContext";
 
 function MenuBar({ linksToShow }) {
+  const { user } = useContext(UserContext);
   async function auth() {
     window.open(process.env.REACT_APP_PROXY_URL + "/oauth/google", "_self");
   }
@@ -55,17 +57,29 @@ function MenuBar({ linksToShow }) {
           </Link>
         </div>
       )}
-      {linksToShow.signIn && (
-        <div
-          className={styles.menuItem}
-          id={styles.menuAccount}
-          style={{ gridArea: "right" }}
-          onClick={auth}
-        >
-          <span>Sign in</span>
-          <i className="fa-solid fa-user"></i>
-        </div>
-      )}
+      {linksToShow.signIn &&
+        (user ? (
+          <div
+            className={styles.menuItem}
+            id={styles.menuAccount}
+            style={{ gridArea: "right" }}
+          >
+            <Link to="/home">
+              <span>Dashboard</span>
+              <i className="fa-solid fa-user"></i>
+            </Link>
+          </div>
+        ) : (
+          <div
+            className={styles.menuItem}
+            id={styles.menuAccount}
+            style={{ gridArea: "right" }}
+            onClick={auth}
+          >
+            <span>Sign in</span>
+            <i className="fa-solid fa-user"></i>
+          </div>
+        ))}
     </div>
   );
 }
